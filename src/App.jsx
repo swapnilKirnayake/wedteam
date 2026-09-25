@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 import professionals from "./data/professionals";
+import ProfessionalModal from "./components/ProfessionalModal";
 
 const categories = [
   "All",
@@ -23,33 +24,53 @@ const categories = [
 ];
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] =
+    useState("All");
+
   const [team, setTeam] = useState([]);
+
   const [search, setSearch] = useState("");
+
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const filteredProfessionals = professionals.filter((person) => {
-    const matchesCategory =
-      selectedCategory === "All" ||
-      person.category.toLowerCase() === selectedCategory.toLowerCase();
+  const [selectedProfessional, setSelectedProfessional] =
+    useState(null);
 
-    const searchValue = search.toLowerCase().trim();
+  const filteredProfessionals =
+    professionals.filter((person) => {
+      const matchesCategory =
+        selectedCategory === "All" ||
+        person.category.toLowerCase() ===
+          selectedCategory.toLowerCase();
 
-    const matchesSearch =
-      searchValue === "" ||
-      person.name.toLowerCase().includes(searchValue) ||
-      person.role.toLowerCase().includes(searchValue) ||
-      person.location.toLowerCase().includes(searchValue) ||
-      person.skills.some((skill) =>
-        skill.toLowerCase().includes(searchValue)
-      );
+      const searchValue =
+        search.toLowerCase().trim();
 
-    return matchesCategory && matchesSearch;
-  });
+      const matchesSearch =
+        searchValue === "" ||
+        person.name
+          .toLowerCase()
+          .includes(searchValue) ||
+        person.role
+          .toLowerCase()
+          .includes(searchValue) ||
+        person.location
+          .toLowerCase()
+          .includes(searchValue) ||
+        person.skills.some((skill) =>
+          skill.toLowerCase().includes(searchValue)
+        );
+
+      return matchesCategory && matchesSearch;
+    });
 
   const addToTeam = (person) => {
     setTeam((currentTeam) => {
-      if (currentTeam.some((member) => member.id === person.id)) {
+      if (
+        currentTeam.some(
+          (member) => member.id === person.id
+        )
+      ) {
         return currentTeam;
       }
 
@@ -59,7 +80,9 @@ function App() {
 
   const removeFromTeam = (id) => {
     setTeam((currentTeam) =>
-      currentTeam.filter((person) => person.id !== id)
+      currentTeam.filter(
+        (person) => person.id !== id
+      )
     );
   };
 
@@ -67,6 +90,9 @@ function App() {
     (sum, person) => sum + person.price,
     0
   );
+
+  const isInTeam = (id) =>
+    team.some((person) => person.id === id);
 
   return (
     <div className="app">
@@ -77,7 +103,9 @@ function App() {
           <div className="brand-mark">W</div>
 
           <div>
-            <div className="brand-name">WedTeam</div>
+            <div className="brand-name">
+              WedTeam
+            </div>
 
             <div className="brand-tagline">
               People for your perfect day
@@ -86,7 +114,10 @@ function App() {
         </div>
 
         <nav className="desktop-nav">
-          <a className="active" href="#professionals">
+          <a
+            className="active"
+            href="#professionals"
+          >
             Find Professionals
           </a>
 
@@ -111,7 +142,11 @@ function App() {
 
           <button
             className="mobile-menu-button"
-            onClick={() => setMenuOpen((current) => !current)}
+            onClick={() =>
+              setMenuOpen(
+                (current) => !current
+              )
+            }
             aria-label="Open menu"
           >
             {menuOpen ? (
@@ -127,9 +162,17 @@ function App() {
 
       {menuOpen && (
         <div className="mobile-menu">
-          <a href="#professionals">Find Professionals</a>
-          <a href="#how-it-works">How It Works</a>
-          <a href="#real-weddings">Real Weddings</a>
+          <a href="#professionals">
+            Find Professionals
+          </a>
+
+          <a href="#how-it-works">
+            How It Works
+          </a>
+
+          <a href="#real-weddings">
+            Real Weddings
+          </a>
         </div>
       )}
 
@@ -149,9 +192,9 @@ function App() {
             </h1>
 
             <p>
-              Find talented professionals and create the
-              perfect team for your wedding, one person at
-              a time.
+              Find talented professionals and
+              create the perfect team for your
+              wedding, one person at a time.
             </p>
           </div>
 
@@ -200,19 +243,22 @@ function App() {
               </div>
             </div>
 
-            {/* CATEGORIES */}
+            {/* CATEGORY FILTERS */}
 
             <div className="category-list">
               {categories.map((category) => (
                 <button
                   key={category}
                   className={
-                    selectedCategory === category
+                    selectedCategory ===
+                    category
                       ? "category active"
                       : "category"
                   }
                   onClick={() =>
-                    setSelectedCategory(category)
+                    setSelectedCategory(
+                      category
+                    )
                   }
                 >
                   {category}
@@ -223,33 +269,34 @@ function App() {
             {/* PROFESSIONAL GRID */}
 
             <div className="professional-grid">
-              {filteredProfessionals.length === 0 ? (
+              {filteredProfessionals.length ===
+              0 ? (
                 <div className="no-results">
                   <h3>
                     No professionals found
                   </h3>
 
                   <p>
-                    Try another name, skill, or
-                    category.
+                    Try another name, skill,
+                    or category.
                   </p>
                 </div>
               ) : (
                 filteredProfessionals.map(
                   (person) => {
                     const alreadyAdded =
-                      team.some(
-                        (member) =>
-                          member.id === person.id
-                      );
+                      isInTeam(person.id);
 
                     return (
                       <article
                         className="professional-card"
                         key={person.id}
+                        onClick={() =>
+                          setSelectedProfessional(
+                            person
+                          )
+                        }
                       >
-                        {/* IMAGE */}
-
                         <div className="card-image-wrapper">
                           <img
                             src={person.image}
@@ -261,8 +308,6 @@ function App() {
                             ★ {person.rating}
                           </div>
                         </div>
-
-                        {/* CARD CONTENT */}
 
                         <div className="card-content">
                           <div className="card-role">
@@ -297,7 +342,12 @@ function App() {
                               ))}
                           </div>
 
-                          <div className="card-footer">
+                          <div
+                            className="card-footer"
+                            onClick={(event) =>
+                              event.stopPropagation()
+                            }
+                          >
                             <div>
                               <strong>
                                 ₹
@@ -320,7 +370,9 @@ function App() {
                                   ? removeFromTeam(
                                       person.id
                                     )
-                                  : addToTeam(person)
+                                  : addToTeam(
+                                      person
+                                    )
                               }
                             >
                               {alreadyAdded
@@ -438,8 +490,6 @@ function App() {
               </>
             )}
 
-            {/* TRUST */}
-
             <div className="trust-card">
               <span className="eyebrow">
                 WHY WEDTEAM
@@ -473,11 +523,12 @@ function App() {
           </aside>
         </section>
 
-        {/* SIMPLE FOOTER */}
+        {/* FOOTER */}
 
         <footer className="footer">
           <div>
             <strong>WedTeam</strong>
+
             <span>
               Build your perfect wedding team.
             </span>
@@ -488,6 +539,24 @@ function App() {
           </span>
         </footer>
       </main>
+
+      {/* PROFESSIONAL PROFILE MODAL */}
+
+      <ProfessionalModal
+        professional={selectedProfessional}
+        isAdded={
+          selectedProfessional
+            ? isInTeam(
+                selectedProfessional.id
+              )
+            : false
+        }
+        onClose={() =>
+          setSelectedProfessional(null)
+        }
+        onAdd={addToTeam}
+        onRemove={removeFromTeam}
+      />
     </div>
   );
 }
