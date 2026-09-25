@@ -9,7 +9,7 @@
     sans-serif;
 
   color: #111111;
-  background: #f5f5f3;
+  background: #f3f3f1;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -25,7 +25,7 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #f5f5f3;
+  background: #f3f3f1;
 }
 
 button,
@@ -46,17 +46,20 @@ a {
   min-height: 100vh;
 }
 
+/* ============================= */
 /* HEADER */
+/* ============================= */
 
 .header {
   height: 76px;
   padding: 0 42px;
-  background: #ffffff;
-  border-bottom: 1px solid #e8e8e6;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e7e7e4;
 
   position: sticky;
   top: 0;
@@ -72,27 +75,30 @@ a {
 .brand-mark {
   width: 36px;
   height: 36px;
-  border-radius: 11px;
 
   display: grid;
   place-items: center;
 
+  border-radius: 10px;
+
   background: #111111;
   color: #ffffff;
 
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .brand-name {
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
 }
 
 .brand-tagline {
   margin-top: 2px;
-  color: #8b8b88;
+
+  color: #8c8c88;
+
   font-size: 10px;
 }
 
@@ -102,11 +108,15 @@ a {
   gap: 34px;
 
   color: #777773;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .desktop-nav a {
   padding: 29px 0 27px;
+}
+
+.desktop-nav a:hover {
+  color: #111111;
 }
 
 .desktop-nav a.active {
@@ -126,20 +136,25 @@ a {
   gap: 6px;
 
   color: #555552;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .account-button {
   width: 34px;
   height: 34px;
+
   border: 1px solid #ddddda;
   border-radius: 50%;
 
   background: #ffffff;
   color: #111111;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
+}
+
+.account-button:hover {
+  background: #f1f1ef;
 }
 
 .mobile-menu-button {
@@ -147,6 +162,7 @@ a {
 
   border: 0;
   background: transparent;
+
   color: #111111;
 }
 
@@ -154,7 +170,9 @@ a {
   display: none;
 }
 
+/* ============================= */
 /* HERO */
+/* ============================= */
 
 .hero {
   max-width: 1440px;
@@ -165,6 +183,7 @@ a {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+
   gap: 60px;
 }
 
@@ -178,9 +197,11 @@ a {
   margin-bottom: 13px;
 
   color: #858581;
-  font-size: 10px;
+
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 1.7px;
+
+  letter-spacing: 1.8px;
 }
 
 .hero h1 {
@@ -188,17 +209,21 @@ a {
 
   font-size: clamp(48px, 6vw, 82px);
   line-height: 0.94;
+
   letter-spacing: -5px;
+
   font-weight: 700;
 }
 
 .hero p {
   max-width: 470px;
+
   margin: 28px 0 0;
 
   color: #6f6f6b;
-  font-size: 15px;
-  line-height: 1.65;
+
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .search-area {
@@ -217,14 +242,21 @@ a {
 
   background: #ffffff;
   border: 1px solid #e2e2df;
-  border-radius: 12px;
+  border-radius: 11px;
 }
 
 .search-box {
   flex: 1;
+
   gap: 10px;
+
   padding: 0 16px;
+
   color: #999995;
+}
+
+.search-box:focus-within {
+  border-color: #999995;
 }
 
 .search-box input {
@@ -233,10 +265,10 @@ a {
   border: 0;
   outline: 0;
 
-  color: #111111;
   background: transparent;
+  color: #111111;
 
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .search-box input::placeholder {
@@ -245,15 +277,18 @@ a {
 
 .search-location {
   gap: 7px;
+
   padding: 0 16px;
 
   color: #444440;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
 }
 
-/* CONTENT */
+/* ============================= */
+/* MAIN CONTENT */
+/* ============================= */
 
 .content {
   max-width: 1440px;
@@ -263,6 +298,7 @@ a {
 
   display: grid;
   grid-template-columns: minmax(0, 1fr) 330px;
+
   gap: 34px;
 }
 
@@ -282,14 +318,20 @@ a {
 .team-header h2 {
   margin: 0;
 
-  font-size: 24px;
+  font-size: 23px;
+
   letter-spacing: -0.8px;
 }
 
 .result-count {
   color: #8b8b87;
-  font-size: 12px;
+
+  font-size: 11px;
 }
+
+/* ============================= */
+/* CATEGORY FILTERS */
+/* ============================= */
 
 .category-list {
   display: flex;
@@ -298,6 +340,7 @@ a {
   margin-bottom: 24px;
 
   overflow-x: auto;
+
   scrollbar-width: none;
 }
 
@@ -314,9 +357,10 @@ a {
   border-radius: 8px;
 
   background: transparent;
+
   color: #6f6f6b;
 
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .category:hover {
@@ -326,15 +370,21 @@ a {
 
 .category.active {
   border-color: #111111;
+
   background: #111111;
+
   color: #ffffff;
 }
 
-/* PROFESSIONAL CARDS */
+/* ============================= */
+/* PROFESSIONAL GRID */
+/* ============================= */
 
 .professional-grid {
   display: grid;
+
   grid-template-columns: repeat(4, minmax(0, 1fr));
+
   gap: 14px;
 }
 
@@ -342,7 +392,8 @@ a {
   overflow: hidden;
 
   background: #ffffff;
-  border: 1px solid #e5e5e2;
+
+  border: 1px solid #e4e4e1;
   border-radius: 14px;
 
   transition:
@@ -353,11 +404,13 @@ a {
 .professional-card:hover {
   transform: translateY(-3px);
 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 16px 35px rgba(0, 0, 0, 0.06);
 }
 
 .card-image-wrapper {
   position: relative;
+
   aspect-ratio: 1 / 1.05;
 
   overflow: hidden;
@@ -374,15 +427,21 @@ a {
   object-fit: cover;
 
   filter: grayscale(100%);
-  transition: transform 0.35s ease;
+
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease;
 }
 
 .professional-card:hover .card-image {
   transform: scale(1.04);
+
+  filter: grayscale(85%);
 }
 
 .rating {
   position: absolute;
+
   top: 10px;
   right: 10px;
 
@@ -404,16 +463,20 @@ a {
   margin-bottom: 5px;
 
   color: #858581;
-  font-size: 10px;
-  font-weight: 600;
+
+  font-size: 9px;
+  font-weight: 700;
+
   text-transform: uppercase;
-  letter-spacing: 0.6px;
+
+  letter-spacing: 0.7px;
 }
 
 .card-content h3 {
   margin: 0;
 
   font-size: 15px;
+
   letter-spacing: -0.3px;
 }
 
@@ -425,7 +488,36 @@ a {
 
   color: #999995;
 
-  font-size: 10px;
+  font-size: 9px;
+}
+
+.card-skills {
+  display: flex;
+  gap: 5px;
+
+  margin-top: 10px;
+
+  overflow: hidden;
+}
+
+.card-skills span {
+  max-width: 50%;
+
+  overflow: hidden;
+
+  padding: 5px 7px;
+
+  border-radius: 5px;
+
+  background: #f1f1ef;
+
+  color: #73736f;
+
+  font-size: 8px;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
 }
 
 .card-footer {
@@ -433,7 +525,7 @@ a {
   align-items: center;
   justify-content: space-between;
 
-  margin-top: 16px;
+  margin-top: 14px;
   padding-top: 13px;
 
   border-top: 1px solid #eeeeeb;
@@ -445,7 +537,8 @@ a {
 
 .card-footer span {
   color: #999995;
-  font-size: 10px;
+
+  font-size: 9px;
 }
 
 .add-button {
@@ -455,25 +548,71 @@ a {
   border-radius: 7px;
 
   background: #ffffff;
+
   color: #111111;
 
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
 }
 
 .add-button:hover {
-  background: #111111;
   border-color: #111111;
+
+  background: #111111;
+
   color: #ffffff;
 }
 
 .add-button.added {
   border-color: #111111;
+
   background: #111111;
+
   color: #ffffff;
 }
 
+/* ============================= */
+/* NO RESULTS */
+/* ============================= */
+
+.no-results {
+  grid-column: 1 / -1;
+
+  min-height: 260px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background: #ffffff;
+
+  border: 1px solid #e4e4e1;
+  border-radius: 14px;
+
+  text-align: center;
+}
+
+.no-results h3 {
+  margin: 0;
+
+  font-size: 17px;
+}
+
+.no-results p {
+  margin: 8px 0 0;
+
+  color: #8c8c88;
+
+  font-size: 11px;
+}
+
+/* ============================= */
 /* TEAM SIDEBAR */
+/* ============================= */
 
 .team-sidebar {
   align-self: start;
@@ -484,6 +623,7 @@ a {
   padding: 20px;
 
   background: #ffffff;
+
   border: 1px solid #e2e2df;
   border-radius: 16px;
 }
@@ -499,7 +639,7 @@ a {
 }
 
 .team-header h2 {
-  font-size: 20px;
+  font-size: 19px;
 }
 
 .team-count {
@@ -509,11 +649,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 5px;
 
   border-radius: 8px;
 
   background: #111111;
+
   color: #ffffff;
 
   font-size: 10px;
@@ -549,11 +691,13 @@ a {
 
 .empty-team p {
   max-width: 210px;
+
   margin: 8px auto 0;
 
   color: #999995;
 
-  font-size: 11px;
+  font-size: 10px;
+
   line-height: 1.5;
 }
 
@@ -564,6 +708,7 @@ a {
 .team-member {
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   padding: 10px 0;
@@ -599,18 +744,21 @@ a {
   margin-top: 2px;
 
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
   color: #888884;
 
   font-size: 9px;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
 }
 
 .member-info small {
   margin-top: 4px;
 
   font-size: 9px;
+
   font-weight: 700;
 }
 
@@ -629,11 +777,13 @@ a {
   border-radius: 7px;
 
   background: #ffffff;
+
   color: #888884;
 }
 
 .remove-button:hover {
   color: #111111;
+
   border-color: #aaaaa6;
 }
 
@@ -643,6 +793,7 @@ a {
   justify-content: space-between;
 
   margin-top: 8px;
+
   padding: 15px 0;
 
   border-top: 1px solid #eeeeeb;
@@ -650,6 +801,7 @@ a {
 
 .team-total span {
   color: #888884;
+
   font-size: 10px;
 }
 
@@ -664,20 +816,28 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+
   gap: 8px;
 
   border: 0;
   border-radius: 9px;
 
   background: #111111;
+
   color: #ffffff;
 
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .contact-button:hover {
   background: #333333;
+
+  transform: translateY(-1px);
 }
 
 .contact-note {
@@ -686,32 +846,43 @@ a {
   color: #999995;
 
   font-size: 9px;
+
   line-height: 1.45;
+
   text-align: center;
 }
 
+/* ============================= */
+/* TRUST CARD */
+/* ============================= */
+
 .trust-card {
   margin-top: 25px;
+
   padding: 17px;
 
   border-radius: 11px;
 
-  background: #f2f2f0;
+  background: #f1f1ef;
 }
 
 .trust-card h3 {
   margin: 0;
 
   font-size: 14px;
+
   line-height: 1.3;
+
   letter-spacing: -0.3px;
 }
 
 .trust-card ul {
   display: grid;
+
   gap: 8px;
 
   margin: 15px 0 0;
+
   padding: 0;
 
   list-style: none;
@@ -724,13 +895,14 @@ a {
 
   color: #777773;
 
-  font-size: 10px;
+  font-size: 9px;
 }
 
 .trust-card li::before {
   content: "✓";
 
   position: absolute;
+
   left: 0;
 
   color: #111111;
@@ -738,7 +910,47 @@ a {
   font-weight: 700;
 }
 
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+.footer {
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding: 30px 42px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid #ddddda;
+
+  color: #999995;
+
+  font-size: 10px;
+}
+
+.footer div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer strong {
+  color: #111111;
+
+  font-size: 12px;
+}
+
+.footer span {
+  color: #999995;
+}
+
+/* ============================= */
 /* RESPONSIVE */
+/* ============================= */
 
 @media (max-width: 1200px) {
   .professional-grid {
@@ -753,7 +965,9 @@ a {
 
   .hero {
     padding: 60px 24px 45px;
+
     flex-direction: column;
+
     align-items: flex-start;
   }
 
@@ -763,6 +977,7 @@ a {
 
   .content {
     padding: 0 24px 60px;
+
     grid-template-columns: 1fr;
   }
 
@@ -786,11 +1001,13 @@ a {
 
   .mobile-menu-button {
     display: grid;
+
     place-items: center;
   }
 
   .mobile-menu {
     position: fixed;
+
     top: 68px;
     left: 0;
     right: 0;
@@ -798,11 +1015,13 @@ a {
     z-index: 40;
 
     display: flex;
+
     flex-direction: column;
 
     padding: 10px 24px 20px;
 
     background: #ffffff;
+
     border-bottom: 1px solid #e5e5e2;
   }
 
@@ -826,6 +1045,7 @@ a {
 
   .hero h1 {
     font-size: 52px;
+
     letter-spacing: -3px;
   }
 
@@ -855,6 +1075,16 @@ a {
 
   .result-count {
     margin-top: 5px;
+  }
+
+  .footer {
+    padding: 25px 20px 35px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
   }
 }
 
