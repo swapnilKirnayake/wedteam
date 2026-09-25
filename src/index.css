@@ -8,8 +8,28 @@
     "Segoe UI",
     sans-serif;
 
-  color: #111111;
-  background: #f3f3f1;
+  --cherry: #e85d75;
+  --cherry-dark: #d94b64;
+  --sakura: #f7dde5;
+  --sakura-light: #fff6f8;
+  --plum: #4b3a4f;
+  --plum-dark: #382b3b;
+
+  --text: #352936;
+  --text-soft: #765f6c;
+  --muted: #9a8791;
+
+  --white: #ffffff;
+  --border: #efdde3;
+  --border-soft: #f5e8ec;
+
+  --shadow-sm: 0 4px 16px rgba(75, 58, 79, 0.06);
+  --shadow-md: 0 12px 30px rgba(75, 58, 79, 0.1);
+  --shadow-lg: 0 20px 50px rgba(75, 58, 79, 0.14);
+
+  color: var(--text);
+  background: var(--sakura-light);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -25,7 +45,13 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  background: #f3f3f1;
+  background:
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(232, 93, 117, 0.09),
+      transparent 28%
+    ),
+    var(--sakura-light);
 }
 
 button,
@@ -58,12 +84,14 @@ a {
   align-items: center;
   justify-content: space-between;
 
-  background: #ffffff;
-  border-bottom: 1px solid #e7e7e4;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid var(--border);
 
   position: sticky;
   top: 0;
   z-index: 50;
+
+  backdrop-filter: blur(16px);
 }
 
 .brand {
@@ -79,25 +107,28 @@ a {
   display: grid;
   place-items: center;
 
-  border-radius: 10px;
+  border-radius: 11px;
 
-  background: #111111;
+  background: var(--cherry);
   color: #ffffff;
 
   font-size: 14px;
   font-weight: 700;
+
+  box-shadow: 0 6px 16px rgba(232, 93, 117, 0.25);
 }
 
 .brand-name {
   font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.4px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--plum);
 }
 
 .brand-tagline {
   margin-top: 2px;
 
-  color: #8c8c88;
+  color: var(--muted);
 
   font-size: 10px;
 }
@@ -107,21 +138,22 @@ a {
   align-items: center;
   gap: 34px;
 
-  color: #777773;
+  color: var(--text-soft);
   font-size: 12px;
 }
 
 .desktop-nav a {
   padding: 29px 0 27px;
+  transition: color 0.2s ease;
 }
 
 .desktop-nav a:hover {
-  color: #111111;
+  color: var(--cherry);
 }
 
 .desktop-nav a.active {
-  color: #111111;
-  border-bottom: 2px solid #111111;
+  color: var(--cherry);
+  border-bottom: 2px solid var(--cherry);
 }
 
 .header-actions {
@@ -135,7 +167,7 @@ a {
   align-items: center;
   gap: 6px;
 
-  color: #555552;
+  color: var(--text-soft);
   font-size: 12px;
 }
 
@@ -143,18 +175,25 @@ a {
   width: 34px;
   height: 34px;
 
-  border: 1px solid #ddddda;
+  border: 1px solid var(--border);
   border-radius: 50%;
 
-  background: #ffffff;
-  color: #111111;
+  background: var(--white);
+  color: var(--plum);
 
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .account-button:hover {
-  background: #f1f1ef;
+  background: var(--sakura);
+  border-color: var(--cherry);
+  transform: translateY(-1px);
 }
 
 .mobile-menu-button {
@@ -163,7 +202,7 @@ a {
   border: 0;
   background: transparent;
 
-  color: #111111;
+  color: var(--plum);
 }
 
 .mobile-menu {
@@ -185,6 +224,13 @@ a {
   justify-content: space-between;
 
   gap: 60px;
+
+  background:
+    radial-gradient(
+      circle at 85% 35%,
+      rgba(232, 93, 117, 0.12),
+      transparent 30%
+    );
 }
 
 .hero-copy {
@@ -196,10 +242,10 @@ a {
 
   margin-bottom: 13px;
 
-  color: #858581;
+  color: var(--cherry);
 
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 800;
 
   letter-spacing: 1.8px;
 }
@@ -212,7 +258,13 @@ a {
 
   letter-spacing: -5px;
 
-  font-weight: 700;
+  font-weight: 800;
+
+  color: var(--plum);
+}
+
+.hero h1::first-line {
+  color: var(--plum);
 }
 
 .hero p {
@@ -220,7 +272,7 @@ a {
 
   margin: 28px 0 0;
 
-  color: #6f6f6b;
+  color: var(--text-soft);
 
   font-size: 14px;
   line-height: 1.7;
@@ -240,9 +292,11 @@ a {
   display: flex;
   align-items: center;
 
-  background: #ffffff;
-  border: 1px solid #e2e2df;
-  border-radius: 11px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 13px;
+
+  box-shadow: var(--shadow-sm);
 }
 
 .search-box {
@@ -252,11 +306,15 @@ a {
 
   padding: 0 16px;
 
-  color: #999995;
+  color: var(--muted);
 }
 
 .search-box:focus-within {
-  border-color: #999995;
+  border-color: var(--cherry);
+
+  box-shadow:
+    0 0 0 3px rgba(232, 93, 117, 0.1),
+    var(--shadow-sm);
 }
 
 .search-box input {
@@ -266,13 +324,13 @@ a {
   outline: 0;
 
   background: transparent;
-  color: #111111;
+  color: var(--text);
 
   font-size: 12px;
 }
 
 .search-box input::placeholder {
-  color: #a0a09c;
+  color: #b6a6ae;
 }
 
 .search-location {
@@ -280,10 +338,10 @@ a {
 
   padding: 0 16px;
 
-  color: #444440;
+  color: var(--plum);
 
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* ============================= */
@@ -321,10 +379,12 @@ a {
   font-size: 23px;
 
   letter-spacing: -0.8px;
+
+  color: var(--plum);
 }
 
 .result-count {
-  color: #8b8b87;
+  color: var(--muted);
 
   font-size: 11px;
 }
@@ -353,27 +413,37 @@ a {
 
   padding: 9px 13px;
 
-  border: 1px solid #ddddda;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
 
-  background: transparent;
+  background: rgba(255, 255, 255, 0.65);
 
-  color: #6f6f6b;
+  color: var(--text-soft);
 
   font-size: 10px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .category:hover {
-  border-color: #999995;
-  color: #111111;
+  border-color: var(--cherry);
+  color: var(--cherry);
+  background: var(--sakura);
+  transform: translateY(-1px);
 }
 
 .category.active {
-  border-color: #111111;
+  border-color: var(--cherry);
 
-  background: #111111;
+  background: var(--cherry);
 
   color: #ffffff;
+
+  box-shadow: 0 6px 16px rgba(232, 93, 117, 0.2);
 }
 
 /* ============================= */
@@ -391,21 +461,25 @@ a {
 .professional-card {
   overflow: hidden;
 
-  background: #ffffff;
+  background: var(--white);
 
-  border: 1px solid #e4e4e1;
-  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  box-shadow: var(--shadow-sm);
 
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .professional-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 
-  box-shadow:
-    0 16px 35px rgba(0, 0, 0, 0.06);
+  border-color: rgba(232, 93, 117, 0.35);
+
+  box-shadow: var(--shadow-lg);
 }
 
 .card-image-wrapper {
@@ -415,7 +489,7 @@ a {
 
   overflow: hidden;
 
-  background: #ddddda;
+  background: var(--sakura);
 }
 
 .card-image {
@@ -426,7 +500,7 @@ a {
 
   object-fit: cover;
 
-  filter: grayscale(100%);
+  filter: saturate(0.82);
 
   transition:
     transform 0.35s ease,
@@ -436,7 +510,7 @@ a {
 .professional-card:hover .card-image {
   transform: scale(1.04);
 
-  filter: grayscale(85%);
+  filter: saturate(1);
 }
 
 .rating {
@@ -447,12 +521,16 @@ a {
 
   padding: 6px 8px;
 
-  border-radius: 7px;
+  border-radius: 8px;
 
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
+
+  color: var(--plum);
 
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
+
+  box-shadow: 0 5px 14px rgba(75, 58, 79, 0.12);
 }
 
 .card-content {
@@ -462,10 +540,10 @@ a {
 .card-role {
   margin-bottom: 5px;
 
-  color: #858581;
+  color: var(--cherry);
 
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 800;
 
   text-transform: uppercase;
 
@@ -478,6 +556,8 @@ a {
   font-size: 15px;
 
   letter-spacing: -0.3px;
+
+  color: var(--plum);
 }
 
 .card-meta {
@@ -486,7 +566,7 @@ a {
 
   margin-top: 6px;
 
-  color: #999995;
+  color: var(--muted);
 
   font-size: 9px;
 }
@@ -507,11 +587,11 @@ a {
 
   padding: 5px 7px;
 
-  border-radius: 5px;
+  border-radius: 6px;
 
-  background: #f1f1ef;
+  background: var(--sakura);
 
-  color: #73736f;
+  color: var(--plum);
 
   font-size: 8px;
 
@@ -528,15 +608,16 @@ a {
   margin-top: 14px;
   padding-top: 13px;
 
-  border-top: 1px solid #eeeeeb;
+  border-top: 1px solid var(--border-soft);
 }
 
 .card-footer strong {
   font-size: 13px;
+  color: var(--plum);
 }
 
 .card-footer span {
-  color: #999995;
+  color: var(--muted);
 
   font-size: 9px;
 }
@@ -544,29 +625,36 @@ a {
 .add-button {
   padding: 7px 10px;
 
-  border: 1px solid #d8d8d4;
-  border-radius: 7px;
+  border: 1px solid var(--cherry);
+  border-radius: 8px;
 
-  background: #ffffff;
+  background: var(--white);
 
-  color: #111111;
+  color: var(--cherry);
 
   font-size: 9px;
-  font-weight: 700;
+  font-weight: 800;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .add-button:hover {
-  border-color: #111111;
+  border-color: var(--cherry);
 
-  background: #111111;
+  background: var(--cherry);
 
   color: #ffffff;
+
+  transform: translateY(-1px);
 }
 
 .add-button.added {
-  border-color: #111111;
+  border-color: var(--plum);
 
-  background: #111111;
+  background: var(--plum);
 
   color: #ffffff;
 }
@@ -588,10 +676,12 @@ a {
 
   padding: 40px;
 
-  background: #ffffff;
+  background: var(--white);
 
-  border: 1px solid #e4e4e1;
-  border-radius: 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  box-shadow: var(--shadow-sm);
 
   text-align: center;
 }
@@ -600,12 +690,14 @@ a {
   margin: 0;
 
   font-size: 17px;
+
+  color: var(--plum);
 }
 
 .no-results p {
   margin: 8px 0 0;
 
-  color: #8c8c88;
+  color: var(--muted);
 
   font-size: 11px;
 }
@@ -622,10 +714,17 @@ a {
 
   padding: 20px;
 
-  background: #ffffff;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(255, 246, 248, 0.98)
+    );
 
-  border: 1px solid #e2e2df;
-  border-radius: 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+
+  box-shadow: var(--shadow-md);
 }
 
 .team-header {
@@ -635,7 +734,7 @@ a {
 
   padding-bottom: 18px;
 
-  border-bottom: 1px solid #eeeeeb;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .team-header h2 {
@@ -652,14 +751,16 @@ a {
 
   gap: 5px;
 
-  border-radius: 8px;
+  border-radius: 9px;
 
-  background: #111111;
+  background: var(--cherry);
 
   color: #ffffff;
 
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
+
+  box-shadow: 0 6px 15px rgba(232, 93, 117, 0.2);
 }
 
 .empty-team {
@@ -677,16 +778,20 @@ a {
 
   margin: 0 auto 14px;
 
-  border: 1px solid #e2e2df;
+  border: 1px solid var(--border);
   border-radius: 50%;
 
-  color: #888884;
+  background: var(--sakura);
+
+  color: var(--cherry);
 }
 
 .empty-team h3 {
   margin: 0;
 
   font-size: 14px;
+
+  color: var(--plum);
 }
 
 .empty-team p {
@@ -694,7 +799,7 @@ a {
 
   margin: 8px auto 0;
 
-  color: #999995;
+  color: var(--muted);
 
   font-size: 10px;
 
@@ -713,7 +818,7 @@ a {
 
   padding: 10px 0;
 
-  border-bottom: 1px solid #f0f0ed;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .team-member img {
@@ -724,9 +829,11 @@ a {
 
   object-fit: cover;
 
-  border-radius: 9px;
+  border-radius: 10px;
 
-  filter: grayscale(100%);
+  filter: saturate(0.82);
+
+  border: 1px solid var(--border);
 }
 
 .member-info {
@@ -738,6 +845,8 @@ a {
 
 .member-info strong {
   font-size: 11px;
+
+  color: var(--plum);
 }
 
 .member-info span {
@@ -745,7 +854,7 @@ a {
 
   overflow: hidden;
 
-  color: #888884;
+  color: var(--muted);
 
   font-size: 9px;
 
@@ -757,9 +866,11 @@ a {
 .member-info small {
   margin-top: 4px;
 
+  color: var(--cherry);
+
   font-size: 9px;
 
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .remove-button {
@@ -773,18 +884,25 @@ a {
 
   flex-shrink: 0;
 
-  border: 1px solid #e1e1de;
-  border-radius: 7px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
 
-  background: #ffffff;
+  background: var(--white);
 
-  color: #888884;
+  color: var(--muted);
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .remove-button:hover {
-  color: #111111;
+  color: var(--cherry);
 
-  border-color: #aaaaa6;
+  border-color: var(--cherry);
+
+  background: var(--sakura);
 }
 
 .team-total {
@@ -796,17 +914,19 @@ a {
 
   padding: 15px 0;
 
-  border-top: 1px solid #eeeeeb;
+  border-top: 1px solid var(--border-soft);
 }
 
 .team-total span {
-  color: #888884;
+  color: var(--muted);
 
   font-size: 10px;
 }
 
 .team-total strong {
   font-size: 15px;
+
+  color: var(--plum);
 }
 
 .contact-button {
@@ -820,30 +940,35 @@ a {
   gap: 8px;
 
   border: 0;
-  border-radius: 9px;
+  border-radius: 10px;
 
-  background: #111111;
+  background: var(--cherry);
 
   color: #ffffff;
 
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
+
+  box-shadow: 0 8px 20px rgba(232, 93, 117, 0.2);
 
   transition:
     background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .contact-button:hover {
-  background: #333333;
+  background: var(--cherry-dark);
 
   transform: translateY(-1px);
+
+  box-shadow: 0 12px 24px rgba(232, 93, 117, 0.28);
 }
 
 .contact-note {
   margin: 9px 5px 0;
 
-  color: #999995;
+  color: var(--muted);
 
   font-size: 9px;
 
@@ -861,9 +986,18 @@ a {
 
   padding: 17px;
 
-  border-radius: 11px;
+  border-radius: 12px;
 
-  background: #f1f1ef;
+  background:
+    linear-gradient(
+      135deg,
+      var(--plum),
+      var(--plum-dark)
+    );
+
+  color: #ffffff;
+
+  box-shadow: var(--shadow-md);
 }
 
 .trust-card h3 {
@@ -893,7 +1027,7 @@ a {
 
   padding-left: 16px;
 
-  color: #777773;
+  color: rgba(255, 255, 255, 0.75);
 
   font-size: 9px;
 }
@@ -905,9 +1039,9 @@ a {
 
   left: 0;
 
-  color: #111111;
+  color: var(--cherry);
 
-  font-weight: 700;
+  font-weight: 800;
 }
 
 /* ============================= */
@@ -925,9 +1059,9 @@ a {
   align-items: center;
   justify-content: space-between;
 
-  border-top: 1px solid #ddddda;
+  border-top: 1px solid var(--border);
 
-  color: #999995;
+  color: var(--muted);
 
   font-size: 10px;
 }
@@ -939,13 +1073,29 @@ a {
 }
 
 .footer strong {
-  color: #111111;
+  color: var(--plum);
 
   font-size: 12px;
 }
 
 .footer span {
-  color: #999995;
+  color: var(--muted);
+}
+
+/* ============================= */
+/* GLOBAL INTERACTION POLISH */
+/* ============================= */
+
+::selection {
+  background: var(--cherry);
+  color: #ffffff;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(232, 93, 117, 0.2);
+  outline-offset: 2px;
 }
 
 /* ============================= */
@@ -1020,19 +1170,27 @@ a {
 
     padding: 10px 24px 20px;
 
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.98);
 
-    border-bottom: 1px solid #e5e5e2;
+    border-bottom: 1px solid var(--border);
+
+    box-shadow: var(--shadow-md);
+
+    backdrop-filter: blur(14px);
   }
 
   .mobile-menu a {
     padding: 14px 0;
 
-    border-bottom: 1px solid #eeeeeb;
+    border-bottom: 1px solid var(--border-soft);
 
-    color: #555552;
+    color: var(--text-soft);
 
     font-size: 13px;
+  }
+
+  .mobile-menu a:hover {
+    color: var(--cherry);
   }
 
   .location {
